@@ -14,19 +14,28 @@
 
 .last-name {
   font-family: 'Archivo Black', sans-serif;
+  width: 100%;
   position: fixed;
+  bottom: 0;
+  left: 0;
+  padding-left: 20px;
+  margin: 0 auto;
 }
 
-.last-name-container {
-}
+/* .last-name-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+} */
 
 .contact-box {
-  background-color: red;
+  background-color: black;
   position: fixed;
   right: 0;
   bottom: 0;
   width: 500px;
-  height: 300px;
-  margin: 50px;
+  height: 175px;
+  margin: 40px 50px 45px 0;
   border-radius: 30px;
 }
