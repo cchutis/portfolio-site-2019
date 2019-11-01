@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactBox = () => {
     return (
-        <div>
+        <div className="contact-box">
             
         </div>
     );
