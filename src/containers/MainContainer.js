@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import FirstName from '../components/FirstName'
 import LastName from '../components/LastName'
 import ContactBox from './ContactBox'
+import PortfolioEntries from './PortfolioEntries'
 
-const MainContainer = () => {
-    return (
-        <div className="main">
-            <FirstName />
-            <LastName />
-            <ContactBox />
-        </div>
-    );
+export default class MainContainer extends Component {
+    render() {
+        return (
+            <div className="main">
+                <FirstName />
+                <PortfolioEntries projects={this.props.projects} />
+                <LastName />
+                <ContactBox />
+            </div>
+        );
+    }
 }
-
-export default MainContainer;
