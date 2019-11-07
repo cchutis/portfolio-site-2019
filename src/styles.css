@@ -65,12 +65,20 @@
   margin: auto auto;
   border-radius: 20px;
   border: 0;
-  color: white;
+  color: green;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: white;
   height: 300px;
   width: 500px;
+}
+
+.back-button {
+
+}
+
+.next-button {
+  
 }
