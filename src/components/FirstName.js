@@ -7,7 +7,9 @@ const FirstName = () => {
     return (
         <div className="first-name-container">
             <ReactFitText compressor={0.82}>
-                <h1 className="first-name">CONSTANTINE</h1>
+                <h1 className="first-name">
+                    CONSTANTINE
+                </h1>
             </ReactFitText>
         </div>
     );
