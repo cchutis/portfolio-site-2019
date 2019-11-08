@@ -9,7 +9,7 @@ export default class MainContainer extends Component {
         return (
             <div className="main">
                 <FirstName />
-                <PortfolioEntries projects={this.props.projects} />
+                <PortfolioEntries projects={this.props.projects} backgroundChange={this.props.backgroundChange} />
                 <LastName />
                 <ContactBox />
             </div>

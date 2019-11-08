@@ -7,7 +7,8 @@ const API = 'http://localhost:3000/projects';
 export default class App extends Component {
   
   state = {
-    projects: []
+    projects: [],
+    background: ""
   }
 
   componentDidMount() {
@@ -24,10 +25,17 @@ export default class App extends Component {
       })
   }
 
+  backgroundChange = (id) => {
+    const backgroundImg = this.state.projects.filter(project => id === project.id)
+    this.setState({
+      background: backgroundImg
+    })
+  }
+
   render() {
     return (
       <div className="app">
-        <MainContainer projects={this.state.projects} />
+        <MainContainer projects={this.state.projects} backgroundChange={this.backgroundChange} />
       </div>
     );
   }

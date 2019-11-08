@@ -8,7 +8,7 @@ export default class PortfolioEntries extends Component {
     renderProjects = () => {
         return this.props.projects.map(project => {
             return <Slide index={project.index - 1}>
-                <ProjectTile key={project.id} project={project} />
+                <ProjectTile key={project.id} project={project} onFocus={this.props.backgroundChange(project.id)}/>
             </Slide>
         })
     }
@@ -19,11 +19,12 @@ export default class PortfolioEntries extends Component {
                 <CarouselProvider
                     naturalSlideWidth={100}
                     naturalSlideHeight={100}
-                    totalSlides={8}>
-                    <ButtonBack className="back-button">BACK</ButtonBack>
+                    totalSlides={8}
+                    infinite>
                     <Slider>
                         {this.renderProjects()}
                     </Slider>
+                <ButtonBack className="back-button">BACK</ButtonBack>
                 <ButtonNext className="next-button">NEXT</ButtonNext>
                 </CarouselProvider>
             </div>
