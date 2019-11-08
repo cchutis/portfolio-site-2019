@@ -75,10 +75,31 @@
   width: 500px;
 }
 
-.back-button {
+.project-tile {
+  margin: auto auto;
+  border-radius: 20px;
+  border: 0;
+  color: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 50px;
+  height: 400px;
+  width: 800px;
+}
 
+.back-button {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  margin: 50px;
 }
 
 .next-button {
-  
+  position: fixed;
+  right: 0;
+  top: 50%;
+  margin: 50px;
 }
