@@ -8,7 +8,7 @@ export default class PortfolioEntries extends Component {
     renderProjects = () => {
         return this.props.projects.map(project => {
             return <Slide index={project.index - 1}>
-                <ProjectTile key={project.id} project={project} onFocus={this.props.backgroundChange(project.id)}/>
+                <ProjectTile key={project.id} project={project} />
             </Slide>
         })
     }
