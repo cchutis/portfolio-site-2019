@@ -5,7 +5,7 @@ import MainContainer from './containers/MainContainer';
 
 const API = 'http://localhost:3000/projects';
 
-let currentColor = 0;
+let currentID = 0;
 const colorArray = [
   "green",
   "red",
@@ -20,8 +20,8 @@ export default class App extends Component {
   
   state = {
     projects: [],
-    background: "green",
-    selectedProject: {}
+    selectedProject: {},
+    background: "green"
   }
 
   componentDidMount() {
@@ -38,27 +38,53 @@ export default class App extends Component {
       })
   }
 
-  colorChanger = (e) => {
-    
-    
+  projectPicker = (e) => {
+  //Right Arrow Picker
+  if(e.keyCode === 39) {
+    console.log("Right Arrow")
+    if(currentID >= 0 && currentID < this.state.projects.length) {
+      currentID++
+      this.setProjectParameters()  
+    }
+  }
     if(e.keyCode === 37) {
-      console.log("Left")
-      if(currentColor !== 0) {
-        currentColor--
-        this.setState({
-          background: colorArray[currentColor]
-        })
-      }
-    } else if(e.keyCode === 39) {
-      console.log("Right")
-      if(currentColor !== 6) {
-        currentColor++
-        this.setState({
-          background: colorArray[currentColor]
-        });
+      console.log("Left Arrow")
+      if(currentID <= this.state.projects.length) {
+        currentID--
+        this.setProjectParameters()
       }
     }
   }
+  
+
+  setProjectParameters = () => {
+    this.setState({
+      selectedProject: this.state.projects[currentID],
+      background: this.state.selectedProject.color
+    });
+  }
+
+  // colorChanger = (e) => {
+    
+    
+  //   if(e.keyCode === 37) {
+  //     console.log("Left")
+  //     if(currentColor !== 0) {
+  //       currentColor--
+  //       this.setState({
+  //         background: colorArray[currentColor]
+  //       })
+  //     }
+  //   } else if(e.keyCode === 39) {
+  //     console.log("Right")
+  //     if(currentColor !== 6) {
+  //       currentColor++
+  //       this.setState({
+  //         background: colorArray[currentColor]
+  //       });
+  //     }
+  //   }
+  // }
 
   // backgroundChange = (id) => {
   //   const backgroundImg = this.state.projects.filter(project => id === project.id)
@@ -70,7 +96,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="app">
-        <MainContainer projects={this.state.projects} colorChanger={this.colorChanger} background={this.state.background}/>
+        <MainContainer projects={this.state.projects} projectPicker={this.projectPicker} background={this.state.background}/>
       </div>
     );
   }

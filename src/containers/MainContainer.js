@@ -9,7 +9,7 @@ import PortfolioEntries from './PortfolioEntries'
 export default class MainContainer extends Component {
     render() {
         return (
-          <div className="main" style={{backgroundColor: this.props.background}} onKeyDown={(e) => this.props.colorChanger(e)} tabIndex={0}>
+          <div className="main" style={{backgroundColor: this.props.background}} onKeyDown={(e) => this.props.projectPicker(e)} tabIndex={0}>
             <FirstName />
             {/* <PortfolioEntries projects={this.props.projects} /> */}
             <LastName />
