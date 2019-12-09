@@ -12,7 +12,8 @@ export default class App extends Component {
   state = {
     projects: [],
     selectedProject: {},
-    background: "white"
+    background: "white",
+    title: "FRONTEND"
   }
 
   componentDidMount() {
@@ -52,14 +53,15 @@ export default class App extends Component {
   setProjectParameters = () => {
     this.setState({
       selectedProject: this.state.projects[currentID],
-      background: this.state.selectedProject.color
+      background: this.state.selectedProject.color,
+      title: this.state.selectedProject.subtitle
     });
   }
 
   render() {
     return (
       <div className="app">
-        <MainContainer projects={this.state.projects} projectPicker={this.projectPicker} background={this.state.background}/>
+        <MainContainer title={this.state.title} projects={this.state.projects} projectPicker={this.projectPicker} background={this.state.background}/>
       </div>
     );
   }

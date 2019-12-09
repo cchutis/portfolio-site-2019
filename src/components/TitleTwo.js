@@ -1,16 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const TitleTwo = () => {
+var ReactFitText = require("react-fittext");
 
-    var ReactFitText = require("react-fittext");
-
-    return (
-      <div className="title-two-container">
-        <ReactFitText compressor={0.68}>
-          <h1 className="title-two">DEVELOPER</h1>
-        </ReactFitText>
-      </div>
-    );
+export default class TitleTwo extends Component {
+    render() {
+      return (
+        <div className="title-two-container">
+          <ReactFitText compressor={0.68}>
+            <h1 className="title-two">{this.props.title}</h1>
+          </ReactFitText>
+        </div>
+      )
+    }
 }
-
-export default TitleTwo;
