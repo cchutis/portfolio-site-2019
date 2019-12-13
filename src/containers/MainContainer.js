@@ -13,8 +13,8 @@ export default class MainContainer extends Component {
             <FirstName />
             {/* <PortfolioEntries projects={this.props.projects} /> */}
             <LastName />
-            <TitleOne />
-            <TitleTwo title={this.props.title}/>
+            <TitleOne title={this.props.title}/>
+            <TitleTwo title2={this.props.title2}/>
             <ContactBox />
           </div>
         );

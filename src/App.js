@@ -13,7 +13,8 @@ export default class App extends Component {
     projects: [],
     selectedProject: {},
     background: "white",
-    title: "FRONTEND"
+    title: "SOFTWARE",
+    title2: "ENGINEER"
   }
 
   componentDidMount() {
@@ -54,14 +55,15 @@ export default class App extends Component {
     this.setState({
       selectedProject: this.state.projects[currentID],
       background: this.state.selectedProject.color,
-      title: this.state.selectedProject.subtitle
+      title: this.state.selectedProject.subtitle,
+      title2: this.state.selectedProject.subtitle2
     });
   }
 
   render() {
     return (
       <div className="app">
-        <MainContainer title={this.state.title} projects={this.state.projects} projectPicker={this.projectPicker} background={this.state.background}/>
+        <MainContainer title={this.state.title} title2={this.state.title2} projects={this.state.projects} projectPicker={this.projectPicker} background={this.state.background}/>
       </div>
     );
   }
