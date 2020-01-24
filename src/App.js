@@ -5,23 +5,23 @@ import MainContainer from './containers/MainContainer';
 
 const API = 'http://localhost:3000/projects';
 
-let currentID = 0;
-
 export default class App extends Component {
   
   state = {
+    currentID: 0,
     projects: [],
     selectedProject: {},
-    background: "white",
-    title: "SOFTWARE",
-    title2: "ENGINEER"
+    title: "",
+    title2: "",
+    background: ""
   }
 
   componentDidMount() {
     this.getProjects()
+    console.log(this.state.currentID)
   }
 
-  getProjects = () => {
+  getProjects = () => 
     fetch(API)
       .then(r => r.json())
       .then(data => {
@@ -29,22 +29,30 @@ export default class App extends Component {
           projects: data
         })
       })
-  }
+      .catch((error) => {
+        console.log(error)
+      });
 
   projectPicker = (e) => {
     //Right Arrow Picker
     if(e.keyCode === 39) {
       console.log("Right Arrow")
-      if(currentID >= 0 && currentID < this.state.projects.length) {
-        currentID++
+      if(this.state.currentID >= 0 && this.state.currentID < this.state.projects.length) {
+        this.setState({
+          currentID: this.state.currentID += 1
+        })
+        console.log(this.state.currentID)
         this.setProjectParameters()  
       }
     }
     //Left Arrow Picker
     if(e.keyCode === 37) {
       console.log("Left Arrow")
-      if(currentID <= this.state.projects.length) {
-        currentID--
+      if(this.state.currentID > 0 && this.state.currentID <= this.state.projects.length) {
+        this.setState({
+          currentID: this.state.currentID -= 1
+        })
+        console.log(this.state.currentID);
         this.setProjectParameters()
       }
     }
@@ -53,7 +61,7 @@ export default class App extends Component {
 
   setProjectParameters = () => {
     this.setState({
-      selectedProject: this.state.projects[currentID],
+      selectedProject: this.state.projects[this.state.currentID],
       background: this.state.selectedProject.color,
       title: this.state.selectedProject.subtitle,
       title2: this.state.selectedProject.subtitle2
