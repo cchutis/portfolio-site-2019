@@ -8,12 +8,12 @@ const API = 'http://localhost:3000/projects';
 export default class App extends Component {
   
   state = {
-    currentID: 0,
+    currentID: 1,
     projects: [],
-    selectedProject: {},
-    title: "",
-    title2: "",
-    background: ""
+    selectedProject: {id: 1},
+    title: "FRONTEND",
+    title2: "DEVELOPER",
+    background: "bkg/texture.jpg"
   }
 
   componentDidMount() {
@@ -37,22 +37,20 @@ export default class App extends Component {
     //Right Arrow Picker
     if(e.keyCode === 39) {
       console.log("Right Arrow")
-      if(this.state.currentID >= 0 && this.state.currentID < this.state.projects.length) {
+      if(this.state.currentID < this.state.projects.length) {
         this.setState({
           currentID: this.state.currentID += 1
         })
-        console.log(this.state.currentID)
         this.setProjectParameters()  
       }
     }
     //Left Arrow Picker
     if(e.keyCode === 37) {
       console.log("Left Arrow")
-      if(this.state.currentID > 0 && this.state.currentID <= this.state.projects.length) {
+      if(this.state.currentID >= 1) {
         this.setState({
           currentID: this.state.currentID -= 1
         })
-        console.log(this.state.currentID);
         this.setProjectParameters()
       }
     }
@@ -62,7 +60,7 @@ export default class App extends Component {
   setProjectParameters = () => {
     this.setState({
       selectedProject: this.state.projects[this.state.currentID],
-      background: this.state.selectedProject.color,
+      background: this.state.selectedProject.background,
       title: this.state.selectedProject.subtitle,
       title2: this.state.selectedProject.subtitle2
     });
