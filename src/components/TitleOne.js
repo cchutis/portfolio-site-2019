@@ -7,7 +7,7 @@ export default class TitleOne extends Component {
     return (
       <div className="title-one-container">
         <ReactFitText compressor={0.68}>
-          <h1 className="title-one">{this.props.title}</h1>
+          <h1 className="title-one" style={{color: this.props.color}}>{this.props.title}</h1>
         </ReactFitText>
       </div>
     )

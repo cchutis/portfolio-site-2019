@@ -7,18 +7,15 @@ const API = 'http://localhost:3000/projects';
 
 export default class App extends Component {
   
+  // set selectedProject and have elements update off slectecproject
   state = {
-    currentID: 1,
+    currentID: 0,
     projects: [],
-    selectedProject: {id: 1},
-    title: "FRONTEND",
-    title2: "DEVELOPER",
-    background: "bkg/texture.jpg"
+    selectedProject: {}
   }
 
   componentDidMount() {
     this.getProjects()
-    console.log(this.state.currentID)
   }
 
   getProjects = () => 
@@ -26,7 +23,8 @@ export default class App extends Component {
       .then(r => r.json())
       .then(data => {
         this.setState({
-          projects: data
+          projects: data,
+          selectedProject: data[this.state.currentID]
         })
       })
       .catch((error) => {
@@ -36,40 +34,41 @@ export default class App extends Component {
   projectPicker = (e) => {
     //Right Arrow Picker
     if(e.keyCode === 39) {
-      console.log("Right Arrow")
-      if(this.state.currentID < this.state.projects.length) {
+      if (this.state.selectedProject.id < this.state.projects.length) {
         this.setState({
-          currentID: this.state.currentID += 1
+          currentID: this.state.currentID + 1
+        }, () => {
+          this.setProjectParameters(this.state.currentID)
         })
-        this.setProjectParameters()  
+      } else {
+        console.log("Max Limit Reached")
       }
     }
     //Left Arrow Picker
     if(e.keyCode === 37) {
-      console.log("Left Arrow")
-      if(this.state.currentID >= 1) {
+      if(this.state.selectedProject.id > 1) {
         this.setState({
-          currentID: this.state.currentID -= 1
+          currentID: this.state.currentID - 1
+        }, () => {
+          this.setProjectParameters(this.state.currentID)
         })
-        this.setProjectParameters()
+      } else {
+        console.log("Min Limit Reached")
       }
     }
   }
-  
 
-  setProjectParameters = () => {
+  setProjectParameters = (id) => {
+
     this.setState({
-      selectedProject: this.state.projects[this.state.currentID],
-      background: this.state.selectedProject.background,
-      title: this.state.selectedProject.subtitle,
-      title2: this.state.selectedProject.subtitle2
+      selectedProject: this.state.projects[id]
     });
   }
 
   render() {
     return (
       <div className="app">
-        <MainContainer title={this.state.title} title2={this.state.title2} projects={this.state.projects} projectPicker={this.projectPicker} background={this.state.background}/>
+        <MainContainer project={this.state.selectedProject} projectPicker={this.projectPicker} />
       </div>
     );
   }
