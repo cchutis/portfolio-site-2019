@@ -16,7 +16,7 @@
     "react-dom": "^16.11.0",
     "react-fittext": "^1.0.0",
     "react-parallax": "^2.2.4",
-    "react-scripts": "3.2.0",
+    "react-scripts": "5.0.1",
     "react-spring": "^8.0.27",
     "react-use-gesture": "^6.0.14"
   },
